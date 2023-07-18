@@ -82,7 +82,7 @@ def tcpfl():
                 sock.send(grtools)
             sock.close()
 
-if method.upper() == "TCP":
+if method == "TCP":
     t = threading.Thread(target=tcpfl)
     print("[GrBroadcast] Successfully sent")
     t.start()
