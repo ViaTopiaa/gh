@@ -200,9 +200,9 @@ if method == "TCP":
                     s.sendall(str.encode(request))
                 sock.close()
             except Exception as e:
-                print("[!]Attacked)
+                print("[!]Attacked")
 
-    threads = []
+   threads = []
     for _ in range(th):
         if method == "TCP":
             t = threading.Thread(target=tcpfl)
