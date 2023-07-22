@@ -202,7 +202,7 @@ if method == "TCP":
             except Exception as e:
                 print("[!]Attacked")
 
-   threads = []
+    threads = []
     for _ in range(th):
         if method == "TCP":
             t = threading.Thread(target=tcpfl)
