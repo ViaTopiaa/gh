@@ -431,7 +431,7 @@ if method == "TCP":
                 print("[!] Attacked Slow ")
                 sock.close()
                 
-    threads = [8000]
+    threads = ["8000"]
     for _ in range(th):
         if method == "TCP":
             t = threading.Thread(target=tcpfl)
