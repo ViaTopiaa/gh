@@ -194,5 +194,3 @@ if method == "TCP":
             with ThreadPoolExecutor(max_workers=th) as executor:
                 for _ in range(th):
                     executor.submit(tcpfl, ip, port)
-
-if __name__ == "__main__":
