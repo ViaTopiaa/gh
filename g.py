@@ -1,12 +1,4 @@
-threads = []
-    for _ in range(th):
-        if method == "TCP":
-            t = threading.Thread(target=tcpfl)
-            threads.append(t)
-            t.start()
-
-    for thread in threads:
-        thread.join()import socket
+import socket
 import random
 import datetime
 import threading
