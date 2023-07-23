@@ -196,4 +196,3 @@ if method == "TCP":
                     executor.submit(tcpfl, ip, port)
 
 if __name__ == "__main__":
-    main()
