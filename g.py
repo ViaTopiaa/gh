@@ -293,11 +293,11 @@ if method == "TCP":
     t2 = threading.Thread(target=attack)
     t2.daemon = True
     threads.append(t2)
-    t2.join()
+    t2.start()
     t3 = threading.Thread(target=combo)
     t3.daemon = True
     threads.append(t3)
-    t3.join()
+    t3.start()
 
     for thread in threads:
         thread.join()
